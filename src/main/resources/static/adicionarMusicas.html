@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incluir Nova Música</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Incluir Nova Música</h1>
+        
+        <form action="/musicas/novo" method="post">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+                <div class="invalid-feedback">O campo Título é obrigatório.</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="artista">Artista:</label>
+                <input type="text" class="form-control" id="artista" name="artista" required>
+                <div class="invalid-feedback">O campo Artista é obrigatório.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="artista">Ano de Lançamento:</label>
+                <input type="date" class="form-control" id="dataLancamento" name="data" required>
+                <div class="invalid-feedback">O campo Ano de Lançamento é obrigatório.</div>
+            </div>
+            
+            <!-- Adicione mais campos do formulário, se necessário -->
+            
+            <button type="reset" class="btn btn-primary" value="reset">Cancelar</button>
+
+            <button type="submit" class="btn btn-primary" value="sub">Salvar</button>
+        </form>
+    </div>
+
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        (function() {
+            'use strict';
+            
+            // Desativa o comportamento padrão de validação do Bootstrap
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
