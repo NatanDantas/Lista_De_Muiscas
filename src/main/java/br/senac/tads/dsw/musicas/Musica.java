@@ -63,12 +63,5 @@ public class Musica {
         this.artista = artista;
         this.dataLancamento = dataLancamento;
     }
-
-    
-    // Construtores (vazio e com argumentos)
-
-    // Getters e setters
-
-    // Sobrescrita dos métodos equals() e hashCode() (opcional)
 }
 
