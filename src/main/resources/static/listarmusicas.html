@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Listagem de Músicas</h1>
+      <p>Não há músicas cadastradas</p>
+      <a href="adicionarMusicas.html" class="btn btn-primary"
+        >+Adicionar Nova Música</a
+      >
+    </div>
+    <div class="container">
+      <h2>Listagem de Músicas</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Artista</th>
+            <th>Data de Lançamento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Loop para exibir as músicas -->
+          <tr th:each="musica : ${musicas}">
+            <td th:text="${musica.id}"></td>
+            <td th:text="${musica.titulo}"></td>
+            <td th:text="${musica.artista}"></td>
+            <td th:text="${musica.dataLancamento}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

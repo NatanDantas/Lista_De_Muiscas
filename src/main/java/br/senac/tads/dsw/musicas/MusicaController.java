@@ -1,5 +1,7 @@
 package br.senac.tads.dsw.musicas;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,19 @@ public class MusicaController {
         }
         
         musicaRepository.save(musica);
-        return "redirect:/musicas";
+        return "redirect:/musicas"; // Redireciona para a listagem
+    }
+
+    @PostMapping("/salvar")
+    public String salvarMusica(@ModelAttribute("musica") Musica musica) {
+        musicaRepository.save(musica);
+        return "redirect:/musicas/salvar"; 
+    }
+
+    @GetMapping("/listar")
+    public String listarMusicas(Model model) {
+        List<Musica> musicas = musicaRepository.findAll();
+        model.addAttribute("musicas", musicas);
+        return "listar-musicas";
     }
 }
