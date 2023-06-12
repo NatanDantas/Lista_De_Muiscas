@@ -14,37 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/musicas")
+@RequestMapping(value = "/salvar")
 public class MusicaController {
     @Autowired
     private MusicaRepository musicaRepository;
-    
-    @GetMapping("/novo")
-    public String exibirFormulario(Model model) {
-        model.addAttribute("musica", new Musica());
-        return "formulario-musica";
-    }
-    
-    @PostMapping("/novo")
-    public String adicionarMusica(@Valid @ModelAttribute("musica") Musica musica, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "formulario-musica";
-        }
-        
-        musicaRepository.save(musica);
-        return "redirect:/musicas"; // Redireciona para a listagem
+   
+    private void salvar(Musica musica) {
+        musicaRepository.saveAndFlushOrElseThrow(musica);
     }
 
-    @PostMapping("/salvar")
-    public String salvarMusica(@ModelAttribute("musica") Musica musica) {
-        musicaRepository.save(musica);
-        return "redirect:/musicas/salvar"; 
-    }
-
-    @GetMapping("/listar")
-    public String listarMusicas(Model model) {
+    private void listar(Model model) {
         List<Musica> musicas = musicaRepository.findAll();
         model.addAttribute("musicas", musicas);
-        return "listar-musicas";
     }
+
 }
