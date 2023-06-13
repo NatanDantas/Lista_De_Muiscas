@@ -1,21 +1,27 @@
 package br.senac.tads.dsw.musicas;
 
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "TB_MUSICA")
 public class Musica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "titulo", nullable = false)
     @NotBlank(message = "O campo Título é obrigatório.")
     private String titulo;
 
+    @Column(name = "artista", nullable = false)
     @NotBlank(message = "O campo Artista é obrigatório.")
     private String artista;
 
